@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "FMIUeOtq2cQe6M+dPEvec6lvuXJ2lb3+lsbPW497m4+oUsNoptOU27e9dCVy99VYx3plMEv8HAhPOVAFPyF3iA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Mike\\ProgramingProjects\\SoT_Helper\\SoT_Helper_Source\\SoT_Helper\\SoT_Helper.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mike\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\Mike\\.nuget\\packages\\pfim\\0.11.2\\pfim.0.11.2.nupkg.sha512"
+  ],
+  "logs": []
+}
