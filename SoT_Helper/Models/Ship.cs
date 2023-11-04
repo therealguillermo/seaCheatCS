@@ -58,7 +58,7 @@ namespace SoT_Helper.Models
         private readonly string _rawName;
         private Coordinates _coords;
         private Color _color;
-        public static Color PlayerShipColor { get; set; } = Color.Aquamarine;
+        public static Color PlayerShipColor { get; set; } = Color.LightGreen;
 
         public Coordinates Coords { get => _coords; set => _coords = value; }
 
@@ -133,11 +133,21 @@ namespace SoT_Helper.Models
             }
 
             // All of our actual display information & rendering
-            Color = SHIP_COLOR;
+            if (Rawname.ToLower().Contains("ai"))
+            {
+                Color = Color.DarkGray;
+            } else
+            {
+                Color = Color.Red;
+            }
+            //Color = SHIP_COLOR;
             Text = BuildTextString();
             Size = 5;
             Icon = new Icon(Shape.Circle, 5, Color.Brown, 0, -150);
-            DisplayText = new DisplayText(14, Size,-150-14/2);
+            //DisplayText = new DisplayText(14, Size,-150-14/2);
+            int xOffset = MathHelper.CenterXDisplayOffset(Text.Length - 10);
+            //SoT_DataManager.InfoLog += $"{Text} |||| {Text.Length} |||| {xOffset}\n";
+            DisplayText = new DisplayText(10, xOffset, 0);
             //DisplayText = new DisplayText(14, 0, 0);
             ShipType = ShipType.Ship;
             if (Name.ToLower().Contains("sloop"))
@@ -203,9 +213,11 @@ namespace SoT_Helper.Models
                     if(CrewId != Guid.Empty && Crews.CrewTracker.ContainsKey(CrewId))
                     {
                         int id = Crews.CrewTracker[CrewId];
-                        return $"C#{id}:{Name} ({damagezoneCount}h,{(int)(waterAmount / maxWaterAmount * 100)}%) - [{Distance}m], {GetDirection((direction + 180) % 360 - 180)} {((direction + 180) % 360)}";
+                        //return $"C#{id}:{Name} ({damagezoneCount}h,{(int)(waterAmount / maxWaterAmount * 100)}%) - [{Distance}m], {GetDirection((direction + 180) % 360 - 180)} {((direction + 180) % 360)}";
+                        return $"C#{id}:{Name} ({damagezoneCount}h,{(int)(waterAmount / maxWaterAmount * 100)}%) - [{Distance}m], {GetDirection((direction + 180) % 360 - 180)} {(MathHelper.rotateDirection(direction) % 360)}";
                     }
-                    return $"{Name} ({damagezoneCount}h,{(int)(waterAmount / maxWaterAmount * 100)}%) - [{Distance}m], {GetDirection((direction + 180) % 360 - 180)} {((direction + 180) % 360)}";
+                    //return $"{Name} ({damagezoneCount}h,{(int)(waterAmount / maxWaterAmount * 100)}%) - [{Distance}m], {GetDirection((direction + 180) % 360 - 180)} {((direction + 180) % 360)}";
+                    return $"{Name} ({damagezoneCount}h,{(int)(waterAmount / maxWaterAmount * 100)}%) - [{Distance}m], {GetDirection((direction + 180) % 360 - 180)} {(MathHelper.rotateDirection(direction) % 360)}";
                 }
                 catch (Exception ex)
                 {
@@ -215,9 +227,11 @@ namespace SoT_Helper.Models
             if (CrewId != Guid.Empty && Crews.CrewTracker.ContainsKey(CrewId))
             {
                 int id = Crews.CrewTracker[CrewId];
-                return $"C#{id}:{Name} - [{Distance}m], {GetDirection((direction + 180) % 360 - 180)} {((direction + 180) % 360)}";
+                //return $"C#{id}:{Name} - [{Distance}m], {GetDirection((direction + 180) % 360 - 180)} {((direction + 180) % 360)}";
+                return $"C#{id}:{Name} - [{Distance}m], {GetDirection((direction + 180) % 360 - 180)} {(MathHelper.rotateDirection(direction) % 360)}";
             }
-            return $"{Name} - [{Distance}m], {GetDirection((direction + 180) % 360 - 180)} {((direction + 180) % 360)}";
+            //return $"{Name} - [{Distance}m], {GetDirection((direction + 180) % 360 - 180)} {((direction + 180) % 360)}";
+            return $"{Name} - [{Distance}m], {GetDirection((direction + 180) % 360 - 180)} {(MathHelper.rotateDirection(direction) % 360)}";
         }
 
         public static string GetDirection(float y)
@@ -303,6 +317,13 @@ namespace SoT_Helper.Models
                 debugText = "Coordbuild";
                 //_myCoords = myCoords;
                 Coords = CoordBuilder(actor_root_comp_ptr, coord_offset);
+                Coords = new Coordinates()
+                {
+                    x = Coords.x,
+                    y = Coords.y,
+                    z = Coords.z + 12,
+                }; ;
+
                 _coords.z += 7;
                 float newDistance = MathHelper.CalculateDistance(this.Coords, myCoords);
 
@@ -329,7 +350,7 @@ namespace SoT_Helper.Models
                 if(ScreenCoords != null)
                 {
                     this.ShowText = true;
-                    this.ShowIcon = true;
+                    this.ShowIcon = false;
                 }
 
                 if (!this.Name.Contains("Near"))
@@ -460,7 +481,7 @@ namespace SoT_Helper.Models
                 if (this.ScreenCoords != null && !ToDelete)
                 {
                     this.ShowText = true;
-                    this.ShowIcon = true;
+                    this.ShowIcon = false;
 
                     //Icon = new Icon(Shape.Circle, 5, Icon.IconColor);
                     //DisplayText = new DisplayText(Color.Brown, 14, Icon.size,0);

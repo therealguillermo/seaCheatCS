@@ -253,7 +253,15 @@ namespace SoT_Helper.Services
             var h = SoT_Tool.SOT_WINDOW_H / 90; //20;
             var direction = GetDirection(SoT_Tool.my_coords.rot_y);
             DrawOutlinedString(renderer, w - direction.Length * 4, h, direction, Color.Yellow, 0);
-            string directionNumber = ((int)SoT_Tool.my_coords.rot_y + 180).ToString();
+            /*int sDirection = ((int)SoT_Tool.my_coords.rot_y + 180) - 90;
+            if (sDirection < 0)
+            {
+                sDirection += 360;
+            }*/
+
+            int sDirection = MathHelper.rotateDirection((int)SoT_Tool.my_coords.rot_y);
+            //string directionNumber = ((int)SoT_Tool.my_coords.rot_y + 180).ToString();
+            string directionNumber = (sDirection).ToString();
             int currentRotation = (int)SoT_Tool.my_coords.rot_y + 180;
             DrawOutlinedString(renderer, w - directionNumber.Length * 4, h + 15
                             , directionNumber, Color.Yellow, -2);

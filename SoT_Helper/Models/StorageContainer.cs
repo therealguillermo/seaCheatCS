@@ -58,6 +58,7 @@ namespace SoT_Helper.Models
                     Name = "Crate";
                 else
                     Name = "Barrel";
+                    Color = Color.Tan;
 
                 //Name = _rawName;
 

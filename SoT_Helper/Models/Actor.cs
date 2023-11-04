@@ -26,7 +26,7 @@ namespace SoT_Helper.Models
             rm = memoryReader;
             ActorId = actorId;
             ActorAddress = address;
-            Rawname= _rawName = rawName;
+            Rawname = _rawName = rawName;
 
             actor_root_comp_ptr = GetRootComponentAddress(address);
 
@@ -41,11 +41,55 @@ namespace SoT_Helper.Models
                 Name = _rawName;
 
             // All of our actual display information & rendering
-            Color = ACTOR_COLOR;
+            //Color = ACTOR_COLOR;
+            //color
+
+            Color = Color.WhiteSmoke;
+            if (Rawname.ToLower().Contains("common"))
+            {
+                Color = Color.DarkGreen;
+            }
+            if (Rawname.ToLower().Contains("ruby") || Rawname.ToLower().Contains("reaper") || 
+                Rawname.ToLower().Contains("rage") || Rawname.ToLower().Contains("fort")) {
+                Color = Color.Red;
+            }
+            if (Rawname.ToLower().Contains("rare") || Rawname.ToLower().Contains("emerald"))
+            {
+                Color = Color.Green;
+            }
+            if (Rawname.ToLower().Contains("mythical") || Rawname.ToLower().Contains("sudds") ||
+                Rawname.ToLower().Contains("hauntedisland_npc"))
+            {
+                Color = Color.LightBlue;
+            }
+            if (Rawname.ToLower().Contains("legendary"))
+            {
+                Color = Color.HotPink;
+            }
+            if (Rawname.ToLower().Contains("piratelegend") || Rawname.ToLower().Contains("destiny"))
+            {
+                Color = Color.Orange;
+            }
+            if (Rawname.ToLower().Contains("ritual") || Rawname.ToLower().Contains("key") || 
+                Rawname.ToLower().Contains("totem")) 
+            {
+                Color = Color.Yellow;
+            }
+            if (Rawname.ToLower().Contains("sapphire"))
+            {
+                Color = Color.Blue;
+            }
+
+
             Text = BuildTextString();
             //Icon = new Icon(Shape.Circle, 5, Color, 0, 0);
+
             Size = 5;
-            DisplayText = new DisplayText(10, Size + 2, -10/2);
+            //DisplayText = new DisplayText(10, Size + 2, -10/2);
+            int xOffset = MathHelper.CenterXDisplayOffset(Name.Length);
+            //SoT_DataManager.InfoLog += $"{Name} |||| {Name.Length} |||| {xOffset}\n";
+            DisplayText = new DisplayText(10, xOffset, 0);
+            
             // Used to track if the display object needs to be removed
             //ToDelete = false;
         }
@@ -83,7 +127,7 @@ namespace SoT_Helper.Models
 
         protected override string BuildTextString()
         {
-            return $"{Name} - {Distance}m";
+            return $"{Name} [{Distance}m]";
         }
 
         public override void Update(Coordinates myCoords)
@@ -101,7 +145,7 @@ namespace SoT_Helper.Models
                 }
 
                 if((!bool.Parse(ConfigurationManager.AppSettings["ShowProjectiles"]) && Rawname.ToLower().Contains("bp_projectile")) 
-                        ||(bool.Parse(ConfigurationManager.AppSettings["ShowTomes"]) && Rawname.ToLower().Contains("tome"))
+                        ||(!bool.Parse(ConfigurationManager.AppSettings["ShowTomes"]) && Rawname.ToLower().Contains("lorebook"))
                         ||(!Rawname.ToLower().Contains("bp_projectile") && !Rawname.ToLower().Contains("tome") && !bool.Parse(ConfigurationManager.AppSettings["ShowOther"]))
                         )
                 {
@@ -183,7 +227,7 @@ namespace SoT_Helper.Models
                 if (this.ScreenCoords != null)
                 {
                     this.ShowText = true;
-                    this.ShowIcon = true;
+                    this.ShowIcon = false;
 
                     // Update our text to reflect our new distance
                     this.Distance = newDistance;
@@ -230,6 +274,7 @@ namespace SoT_Helper.Models
                 CharmService.DrawOutlinedString(renderer,ScreenCoords.Value.X + DisplayText.Offset_X,
                     ScreenCoords.Value.Y + DisplayText.Offset_Y,
                     Text, Color, 0);
+
             }
         }
 

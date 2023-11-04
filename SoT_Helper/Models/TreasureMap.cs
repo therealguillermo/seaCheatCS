@@ -214,7 +214,7 @@ namespace SoT_Helper.Models
 
                         CharmService.DrawOutlinedString(renderer, spotCoords.Value.X,
                         spotCoords.Value.Y,
-                        text, Color.BlueViolet, 4);
+                        text, Color.BlueViolet, 0);
                     }
                 }
             }
@@ -251,7 +251,7 @@ namespace SoT_Helper.Models
 
                         renderer.DrawOutlinedString(spotCoords.Value.X,
                         spotCoords.Value.Y,
-                        text, Color.BlueViolet, 4);
+                        text, Color.BlueViolet, 0);
                     }
                 }
             }

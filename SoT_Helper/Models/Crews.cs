@@ -176,8 +176,8 @@ namespace SoT_Helper.Models
 
                 // 3. Update our strings accordingly
                 crewStr = BuildTextString();
-                var x = SoT_Tool.SOT_WINDOW_H / 20; //20;
-                var y = SoT_Tool.SOT_WINDOW_W / 20;
+                var x = SoT_Tool.SOT_WINDOW_W / 50; //20;
+                var y = SoT_Tool.SOT_WINDOW_H / 20;
                 ScreenCoords = new System.Numerics.Vector2(x, y);
                 ShowText = true;
             }
@@ -510,11 +510,11 @@ namespace SoT_Helper.Models
 
                 if (!crew.CrewMembers.Any(m => m.Value.Length > 0))
                 {
-                    output += "  - "+ string.Join(",",crew.CrewMembers.Keys.Select(n => "["+n.ToString()+"]"));
+                    output += "  - "+ string.Join(", ",crew.CrewMembers.Values.Select(n => "["+n.ToString()+"]"));
                     output +="\n";
                 }
                 else
-                foreach (var player in crew.CrewMembers)
+                foreach (var player in crew.CrewMembers.Values)
                 {
                     output += $"  - {player}\n";
                 }
@@ -538,7 +538,7 @@ namespace SoT_Helper.Models
                         allianceTextLines += allianceText.Split('\n').Length;
                     }
                 }
-                CharmService.DrawOutlinedString(renderer, ScreenCoords.Value.X, ScreenCoords.Value.Y + allianceTextLines * CharmService.TextSize * 1.1f, crewStr, Color.LightBlue, 0);
+                CharmService.DrawOutlinedString(renderer, ScreenCoords.Value.X, ScreenCoords.Value.Y + allianceTextLines * CharmService.TextSize * 1.1f, crewStr, Color.Pink, 0);
             }
         }
 
@@ -558,7 +558,7 @@ namespace SoT_Helper.Models
                         allianceTextLines += allianceText.Split('\n').Length;
                     }
                 }
-                renderer.DrawOutlinedString(ScreenCoords.Value.X, ScreenCoords.Value.Y + allianceTextLines * CharmService.TextSize * 1.1f, crewStr, Color.LightBlue, 0);
+                renderer.DrawOutlinedString(ScreenCoords.Value.X, ScreenCoords.Value.Y + allianceTextLines * CharmService.TextSize * 1.1f, crewStr, Color.Pink, 0);
             }
         }
     }

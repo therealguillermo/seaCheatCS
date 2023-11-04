@@ -1,0 +1,14 @@
+C:\Users\Mike\Desktop\testexeoutput\actors.json
+C:\Users\Mike\Desktop\testexeoutput\RawnameIgnorePatterns.json
+C:\Users\Mike\Desktop\testexeoutput\SoT_Helper.exe
+C:\Users\Mike\Desktop\testexeoutput\offsets.json
+C:\Users\Mike\Desktop\testexeoutput\Charm.dll
+C:\Users\Mike\Desktop\testexeoutput\Charm_native.dll
+C:\Users\Mike\Desktop\testexeoutput\SkeletonMeshNames.json
+C:\Users\Mike\Desktop\testexeoutput\SoT_Helper.dll
+C:\Users\Mike\Desktop\testexeoutput\SoT_Helper.deps.json
+C:\Users\Mike\Desktop\testexeoutput\SoT_Helper.runtimeconfig.json
+C:\Users\Mike\Desktop\testexeoutput\SoT_Helper.dll.config
+C:\Users\Mike\Desktop\testexeoutput\SoT_Helper.pdb
+C:\Users\Mike\Desktop\testexeoutput\Newtonsoft.Json.dll
+C:\Users\Mike\Desktop\testexeoutput\Pfim.dll

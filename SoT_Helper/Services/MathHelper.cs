@@ -428,5 +428,26 @@ Location.Y = SizeY - Transform.Y * SizeX / FOV / Transform.Z;
             double distance = Math.Sqrt(dx * dx + dy * dy + dz * dz);
             return (int)Math.Round(distance);
         }
+
+        public static int CenterXDisplayOffset(int tLen) 
+        {
+            //return the x offset to center text based on size
+            //best allignment when CharmService.TextSize = ~23-24
+            //not enough when smaller, too much when bigger
+            double multiplier = CharmService.TextSize / 2.8;
+            double ret = -(multiplier * (tLen));
+            
+            return (int)ret; 
+        }
+
+        public static int rotateDirection(int rawDir)
+        {
+            int sDirection = (rawDir + 180) - 90;
+            if (sDirection < 0)
+            {
+                sDirection += 360;
+            }
+            return sDirection;
+        }
     }
 }

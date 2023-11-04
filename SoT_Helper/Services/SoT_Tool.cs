@@ -846,7 +846,7 @@ FWalletBalanceItem.Balance
                     SoT_DataManager.DisplayObjects.Add(map);
                 }
             }
-            else if (raw_name == "BP_Wayfinder_MultiTargetCompass_Wieldable_C" || raw_name.ToLower().Contains("MultiTargetCompass_Wieldable_C")) //|| raw_name == "BP_TreasureMap_ItemInfo_XMarksTheSpot_C")
+            else if (raw_name == "BP_Wayfinder_MultiTargetCompass_Wieldable_C" || raw_name.ToLower().Contains("multitargetCompass_wieldable_c")) //|| raw_name == "BP_TreasureMap_ItemInfo_XMarksTheSpot_C")
             {
                 if (my_wayfinder != null)
                 {
@@ -871,8 +871,9 @@ FWalletBalanceItem.Balance
                 projectile.Color = Color.Orange;
                 SoT_DataManager.DisplayObjects.Add(projectile);
             }
-            else if (raw_name.ToLower() == "bp_cannon_c" || raw_name == "BP_Cannon_ShipPartMMC_C")
+            else if (raw_name.ToLower() == "bp_cannon_c" || raw_name == "BP_Cannon_ShipPartMMC_C" || raw_name == "BP_Cannon_ShipPartMMC_b_C")
             {
+                //SoT_DataManager.InfoLog += $"{raw_name}\n";
                 var cannon = new Cannon(mem, actor_id, actor_address, raw_name);
                 cannon.Color = Color.Orange;
                 SoT_DataManager.DisplayObjects.Add(cannon);
@@ -946,7 +947,7 @@ FWalletBalanceItem.Balance
                 var pirate = new Player(mem, actor_id, actor_address, raw_name);
                 SoT_DataManager.DisplayObjects.Add(pirate);
             }
-            else if (raw_name.ToLower().Contains("lorebook")) //bool.Parse(ConfigurationManager.AppSettings["ShowTomes"])
+            else if (raw_name.ToLower().Contains("lorebook") && bool.Parse(ConfigurationManager.AppSettings["ShowTomes"]))
             {
                 var lorebook = new Actor(mem, actor_id, actor_address, raw_name);
                 lorebook.Color = Color.LightYellow;

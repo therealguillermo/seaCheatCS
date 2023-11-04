@@ -402,17 +402,17 @@ namespace SoT_Helper.Models
             var pos = SoT_Tool.my_coords.GetPosition();
             var forward = MathHelper.RotationToVector(fishingRotation);
             var fishingPos = pos + (forward * 10);
-            //if (fishingAngleMarker == null)
-            //{
-            //    var marker = new Marker(rm, "Fishing focus point ", ActorAddress, Rawname, fishingPos);
-            //    fishingAngleMarker = marker;
-            //    SoT_DataManager.DisplayObjects.Add(marker);
-            //}
-            //else
-            //{
-            //    fishingAngleMarker.Coords.SetPosition(fishingPos);
-            //}
-            fishingAngleMarker.Coords.SetPosition(fishingPos);
+            if (fishingAngleMarker == null)
+            {
+                var marker = new Marker(rm, "Fishing focus point ", ActorAddress, Rawname, fishingPos);
+                fishingAngleMarker = marker;
+                SoT_DataManager.DisplayObjects.Add(marker);
+            }
+            else
+            {
+                fishingAngleMarker.Coords.SetPosition(fishingPos);
+            }
+            //fishingAngleMarker.Coords.SetPosition(fishingPos);
 
             return fishingPos;
         }

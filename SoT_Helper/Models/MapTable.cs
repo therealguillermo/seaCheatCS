@@ -166,7 +166,7 @@ namespace SoT_Helper.Models
                     var spotCoords = MathHelper.ObjectToScreen(SoT_Tool.my_coords, pos);
                     if (spotCoords != null && spotCoords.HasValue)
                     {
-                        CharmService.DrawOutlinedString(renderer, spotCoords.Value.X, spotCoords.Value.Y, $"MapPin [{distance}m]", Color.BurlyWood, -2);
+                        CharmService.DrawOutlinedString(renderer, spotCoords.Value.X, spotCoords.Value.Y, $"MapPin [{distance}m]", Color.BurlyWood, 0); // size was  -2
                     }
                     i++;
                 }
@@ -203,7 +203,7 @@ namespace SoT_Helper.Models
                         if(ship.EmissaryLevel > 0)
                             text += $" L{ship.EmissaryLevel}";
                         text += $" [{distance}m]";
-                        CharmService.DrawOutlinedString(renderer, spotCoords.Value.X, spotCoords.Value.Y, text, Color.PaleVioletRed, -2);
+                        CharmService.DrawOutlinedString(renderer, spotCoords.Value.X, spotCoords.Value.Y, text, Color.PaleVioletRed, -2); // size was -2
                     }
                     i++;
                 }
@@ -223,7 +223,7 @@ namespace SoT_Helper.Models
                         var spotCoords = MathHelper.ObjectToScreen(SoT_Tool.my_coords, pos);
                         if (spotCoords != null && spotCoords.HasValue)
                         {
-                            renderer.DrawOutlinedString(spotCoords.Value.X, spotCoords.Value.Y, $"MapPin [{distance}m]", Color.BurlyWood, -2);
+                            renderer.DrawOutlinedString(spotCoords.Value.X, spotCoords.Value.Y, $"MapPin [{distance}m]", Color.BurlyWood, 0); // was -2
                         }
                         i++;
                     }

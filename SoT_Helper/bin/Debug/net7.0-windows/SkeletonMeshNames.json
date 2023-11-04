@@ -17,6 +17,7 @@
   "nme_skellyash_05": "Ashen Key Master",
   "nme_skellyash_06": "Ashen Guardian",
   "nme_skellyash_07": "Ashen Key Master",
+  "nme_skellyash_08": "Skeleton",
   "nme_skellycrew_goldhoarder_03": "Skeleton",
   "nme_skellycrew_goldhoarder_04": "Skeleton",
   "nme_skellycrew_goldhoarder_05": "Skeleton",
@@ -34,5 +35,9 @@
   "nme_skellyshadow_04": "Shadow Skeleton",
   "nme_skellyshadow_05": "Shadow Skeleton",
   "None": "Skeleton",
+  "npc_anc_civ_priest_01": "Skeleton",
+  "npc_anc_civ_priest_02": "Skeleton",
+  "npc_anc_civ_priest_03": "Skeleton",
+  "npc_anc_civ_priest_04": "Skeleton",
   "npc_skellybone_lord_03": "The Duchess - Skeleton Lord"
 }
